@@ -68,3 +68,13 @@ def get_batched_triplet_input(speaker_to_utterance, batch_size, pool):
 
     # batch_input is a torch tensor of shape (24, 100, 40)
     return batch_input
+
+
+def extract_sliding_windows(features):
+    """Extract sliding windows from features."""
+    sliding_windows = []
+    start = 0
+    while start + myconfig.SEQ_LEN <= features.shape[0]:
+        sliding_windows.append(features[start: start + myconfig.SEQ_LEN, :])
+        start += myconfig.SLIDING_WINDOW_STEP
+    return sliding_windows

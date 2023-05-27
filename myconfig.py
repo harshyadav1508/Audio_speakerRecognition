@@ -35,3 +35,21 @@ SPECAUG_TIME_MASK_PROB = 0.3
 SPECAUG_FREQ_MASK_MAX_WIDTH = N_MFCC // 5
 SPECAUG_TIME_MASK_MAX_WIDTH = SEQ_LEN // 5
 TRIPLET_ALPHA = 0.1
+
+# If true, we use transformer instead of LSTM.
+USE_TRANSFORMER = False
+# Dimension of transformer layers.
+TRANSFORMER_DIM = 32
+# Number of encoder layers for transformer
+TRANSFORMER_ENCODER_LAYERS = 2
+# Number of heads in transformer layers.
+TRANSFORMER_HEADS = 8
+
+# Number of triplets to evaluate for computing Equal Error Rate (EER).
+# Both the number of positive trials and number of negative trials will be equal to this number.
+NUM_EVAL_TRIPLETS = 100
+
+
+USE_FULL_SEQUENCE_INFERENCE = False
+SLIDING_WINDOW_STEP = 50
+EVAL_THRESHOLD_STEP = 0.001
