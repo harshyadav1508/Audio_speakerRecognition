@@ -21,7 +21,9 @@ def extract_features(audio_file):
     if sample_rate != 16000:
         waveform = librosa.resample(waveform, sample_rate, 16000)
 
+    # Mel-frequency cepstral coefficients (MFCCs) are robust to noise bcoz of logarithmic compression
     features = librosa.feature.mfcc(y=waveform, sr=sample_rate, n_mfcc=myconfig.N_MFCC)
+    # the shape of features will be 40 X 441, where 40 represent featues where as 441 represent frames
 
     return features.transpose()
 

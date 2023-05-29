@@ -87,9 +87,9 @@ def get_triplet_loss_from_batch_output(batch_output, batch_size):
     """Triplet loss from N*(a|p|n) batch output."""
     batch_output_reshaped = torch.reshape(batch_output, (batch_size, 3, batch_output.shape[1]))     #batch_output_reshaped.shape=[8,3,128]
     batch_loss = get_triplet_loss(
-        batch_output_reshaped[:, 0, :],
-        batch_output_reshaped[:, 1, :],
-        batch_output_reshaped[:, 2, :])
+        batch_output_reshaped[:, 0, :],     #all the 1st row will be anchor
+        batch_output_reshaped[:, 1, :],     #all the 2nd row will be positive
+        batch_output_reshaped[:, 2, :])     #all the 3rd row will be negative
     loss = torch.mean(batch_loss)
     return loss
 
